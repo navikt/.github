@@ -1,7 +1,6 @@
-# Getting help with this project
+# Getting help
 
-NAV mostly builds software for internal usage, so even if you are able to reuse
-our code, you cannot expect any support to be provided.
+We build our software in the open, but most of it is for internal use. Even if you are able to reuse
+our code you cannot expect any support to be provided.
 
-You are free to ask questions about the project; developers might answer
-if they have time.
+Feel free to raise issues in the repositories, our developers might answer at their own discretion.

@@ -1,3 +1,5 @@
 # GitHub meta
 
-Default configuration for NAV IKT repositories.
+Common GitHub stuff (like workflow templates) for the `navikt` organization.
+
+
