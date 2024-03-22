@@ -1,0 +1,24 @@
+name: Just a test workflow
+
+on:
+  pull_request:
+    types: [ opened, reopened, edited ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Harden runner
+        uses: step-security/harden-runner@63c24ba6bd7ba022e95695ff85de572c04a18142 # ratchet:step-security/harden-runner@v2
+        with:
+          disable-sudo: true
+          egress-policy: block
+          allowed-endpoints: >
+            github.com:443
+      
+      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # ratchet:actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Run a one-line script
+        run: echo Hello from navikt
