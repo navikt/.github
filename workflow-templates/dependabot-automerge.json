@@ -1,5 +1,5 @@
 {
-    "name": "Automerge PRs from Dependabot",
+    "name": "Merge Dependabot PRs",
     "description": "Automerge minor and patch updates from Dependabot",
     "iconName": "dependabot.svg",
     "categories": [
