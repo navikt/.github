@@ -1,6 +1,7 @@
 {
     "name": "Merge Dependabot PRs",
     "description": "Automerge minor and patch updates from Dependabot",
+    "iconName": "dependabot",
     "categories": [
         "dependency-management",
         "continuous-integration"
