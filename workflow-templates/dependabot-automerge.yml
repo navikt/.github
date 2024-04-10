@@ -46,7 +46,7 @@ jobs:
                 return;
             }
 
-            const toDager = 2 * 60 * 60 * 1000 // 2 days
+            const toDager = 2 * 60 * 60 * 24 * 1000 // 2 days
             const filtrert = pulls.data
                 .filter((it) => it.state == 'open')
                 .filter((it) => !it.head.repo.fork)
