@@ -41,6 +41,11 @@ jobs:
                 repo: context.repo.repo,
             })
 
+            if (pulls.data.length === 0) {
+                console.log('Ingen PRs funnet -> ingenting å gjøre.');
+                return;
+            }
+
             const toDager = 2 * 60 * 60 * 1000 // 2 days
             const filtrert = pulls.data
                 .filter((it) => it.state == 'open')
