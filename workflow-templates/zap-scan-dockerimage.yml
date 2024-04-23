@@ -32,6 +32,7 @@ jobs:
           pull: true
           project_id: ${{ vars.NAIS_MANAGEMENT_PROJECT_ID }}
           identity_provider: ${{ secrets.NAIS_WORKLOAD_IDENTITY_PROVIDER }}
+
   zap-scan:
     runs-on: ubuntu-latest
     needs: [build-app]
@@ -42,13 +43,19 @@ jobs:
           project_id: ${{ vars.NAIS_MANAGEMENT_PROJECT_ID }}
           identity_provider: ${{ secrets.NAIS_WORKLOAD_IDENTITY_PROVIDER }}
           team: ${{ env.TEAM_NAMESPACE }}
+
       - name: Start application image
         run: docker run --name app -d -p ${{env.APP_PORT}}:${{env.APP_PORT}} ${{ needs.build-app.outputs.image }}
+        #
+        # Add files or env variables required for the application to startup successfully.
+        # 
+
       - name: Zap Setup
         run: | 
           echo "APP_URL=http://$(docker inspect app | grep IPAddress | tail -1 | awk '{print $2}' | tr -d '\",\n'):${{env.APP_PORT}}" >> $GITHUB_ENV
           mkdir zap
           chmod 0777 zap
+
       - name: ZAP Baseline Scan # https://www.zaproxy.org/docs/docker/baseline-scan/
         run: |
             docker run -v $(pwd)/zap:/zap/wrk/:rw \
@@ -62,6 +69,7 @@ jobs:
             -s \
             -I \
             -j
+
       - name: Upload scan report
         uses: actions/upload-artifact@1746f4ab65b179e0ea60a494b83293b640dd5bba # ratchet:actions/upload-artifact@v4
         if: ${{ always() }}
