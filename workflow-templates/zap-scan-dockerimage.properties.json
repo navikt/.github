@@ -1,6 +1,0 @@
-{
-    "name": "Zap Scan Dockerimage",
-    "description": "Use zap-proxy to perform dynamic application security testing",
-    "iconName": "zaproxy-logo",
-    "categories": [ "testing", "automation" ]
-}
